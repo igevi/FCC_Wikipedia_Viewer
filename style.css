@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  background-color: #DDD;
+  font-family: 'Ubuntu', sans-serif;
+  color: black;
+}
+
+h1 {
+  margin-top: 5%;
+  font-size: 54px;
+}
+
+.result-item {
+  padding: 10px;
+  background-color: #EEE;
+}
+
+.form-control {
+  width: 500px;
+  margin: auto;
+  margin-bottom: 1%;
+}
