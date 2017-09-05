@@ -16,26 +16,30 @@ $(document).ready(function() {
       async: false,
       dataType: "json",
       success: function(data) {
-      
-        // from Wikipedia API:
         // heading: data[1][0]
         // description: data[2][0];
         // link: data[3][0];
-        
         $("#search-results").html("");
-        for (var i = 0; i < data.length; i++) {
-          $("#search-results")
-            .prepend(
-              "<li class='result-item'><a target='blank' href=" +
-                data[3][i] +
-                ">" +
-                data[1][i] +
-                "</a><p>" +
-                data[2][i] +
-                "</p></li>"
-            )
-            .hide()
-            .fadeIn("fast");
+        // if no results are given (response === undefined), display 'no results found'
+        if (data[1][0] === undefined) {
+          $("#search-results").html(
+            "<p class='no-results'>" + "No Results Found" + "</p>"
+          );
+        } else {
+          for (var i = 0; i < data.length; i++) {
+            $("#search-results")
+              .prepend(
+                "<li class='result-item'><a target='blank' href=" +
+                  data[3][i] +
+                  ">" +
+                  data[1][i] +
+                  "</a><p>" +
+                  data[2][i] +
+                  "</p></li>"
+              )
+              .hide()
+              .fadeIn("fast");
+          }
         }
         $("#search-term").val("");
       },
